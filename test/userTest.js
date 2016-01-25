@@ -10,7 +10,6 @@ var request = require('supertest')
   , access = require('../access');
 
 
-
 require('sinon-mongoose');
 
 var expects = require('chai').expect;
