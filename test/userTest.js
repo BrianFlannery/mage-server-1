@@ -85,6 +85,7 @@ describe("user tests", function() {
       .end(done)
   });
 
+
   it('should count users', function(done) {
     sandbox.mock(UserModel)
       .expects('count')
