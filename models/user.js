@@ -207,7 +207,7 @@ exports.getUserByAuthenticationId = function(authenticationType, id, callback) {
 
 exports.count = function(callback) {
   User.count({}, function(err, count) {
-    callback(err, count);
+    callback(err, count + 1);  // FIXME introduced to fail build
   });
 }
 
