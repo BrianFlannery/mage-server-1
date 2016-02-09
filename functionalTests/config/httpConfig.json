@@ -14,7 +14,7 @@
   "httpTestUser":{
     "username": "admin",
     "userId": "5632845c653ada826dd5583f",
-    "password": "",
-    "uid": "admin"
+    "password": "httpTestUserPW",
+    "uid": "12345"
   }
 }
