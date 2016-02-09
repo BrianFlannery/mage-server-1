@@ -13,8 +13,8 @@
   },
   "httpTestUser":{
     "username": "admin",
-    "userId": "5632845c653ada826dd5583f",
-    "password": "",
-    "uid": "admin"
+    "userId": "568f3d2053bc873200b71d7b",
+    "password": "password",
+    "uid": "12345"
   }
 }
