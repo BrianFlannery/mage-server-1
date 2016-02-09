@@ -53,6 +53,9 @@ describe("MAGE-server API JSON test", function(){
         'uid': testUser.uid,
         'password': testUser.password
       }
+      console.log("username: " + testUser.username);
+      console.log("uid: " + testUser.uid);
+      console.log("pw: " + testUser.password);
     }
     request(tokenOptions, function(error, response, body){
       if(error){
