@@ -76,6 +76,7 @@ describe("MAGE-server API JSON test", function(){
     }
     done();
   });
+});
 
 
   // ------------- Tests -----------------
