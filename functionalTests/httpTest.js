@@ -66,7 +66,7 @@ describe("MAGE-server API JSON test", function(){
     //    myToken = tokenObj.token;
     //  }
       done();
-    });
+    //});
   });
 
   // ----- make sure the recorder saves to file
