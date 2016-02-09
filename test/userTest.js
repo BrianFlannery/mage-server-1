@@ -89,7 +89,7 @@ describe("user tests", function() {
   it('should count users', function(done) {
     sandbox.mock(UserModel)
       .expects('count')
-      .yields(null, 4);
+      .yields(null, 5);
 
     request(app)
       .get('/api/users/count')
