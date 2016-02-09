@@ -92,7 +92,7 @@ describe("MAGE-server API JSON test", function(){
   });
 
   // ----- Should be unauthorized without token
-  it("Verify request is denied when token isn't given : /api/users/{id}", function(done){
+//  it("Verify request is denied when token isn't given : /api/users/{id}", function(done){
 //    var tokenOptions = {
 //      url: conUrl + "/users/" + testUser.userId,
 //      method: 'GET'
@@ -102,9 +102,9 @@ describe("MAGE-server API JSON test", function(){
 //      if(error){
 //        console.log("Error from /api/users/{id}: " + error);
 //      }
-      done();
-    });
-  });
+//      done();
+//    });
+//  });
 
   
 
