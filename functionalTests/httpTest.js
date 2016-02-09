@@ -51,7 +51,7 @@ describe("MAGE-server API JSON test", function(){
       form: {
         'username': testUser.username,
         'uid': testUser.uid,
-        'password': testUser.password
+        'password': "password"
       }
     }
     console.log("username: " + testUser.username);
