@@ -1,7 +1,7 @@
 {
   "httpServer":{
     "name": "mageDemo",
-    "location": "https://magedemo.geointapps.org/api"
+    "location": "https://mage.dev.geointservices.io/api"
   },
   "functionalServer":{
     "name": "functionalServer",
