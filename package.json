@@ -76,6 +76,7 @@
   "scripts": {
     "postinstall": "bower install --config.cwd=public --config.interactive=false && grunt build",
     "test": "mocha --reporter spec",
+    "functionalTest": "mocha functionalTests/httpTest.js",
     "prestart": "./bin/prestart.sh",
     "poststop": "./bin/poststop.sh",
     "migrate": "mm --config=migrations/mm-config.js",
