@@ -87,12 +87,14 @@ describe("MAGE-server API JSON test", function(){
   it("Verify MAGE server is up - return status 200 : /api", function(done){
     // request(conUrl, function(error, response, body){
     
+    if ( false ) {
     var npm_config_prefix = 'npm_config_'
     Object.keys(process.env).forEach(function (name) {
       if (name.indexOf(npm_config_prefix) !== 0) return
       var val = process.env[name]
       console.log("NPM env var '" + name + "' value '" + val + "'.")
     }, this)
+    }
     
     var ca = [];
     if ( setCaTrustViaSourceCode ) {
@@ -128,8 +130,17 @@ describe("MAGE-server API JSON test", function(){
     if ( setCaTrustViaSourceCode ) {
       options['ca'] = ca ;
     } else {
-      options['cafile'] = process.env.npm_config_cafile ;
-      console.log("process.env.npm_config_cafile " + process.env.npm_config_cafile)
+      // options['cafile'] = process.env.npm_config_cafile ;
+      // console.log("process.env.npm_config_cafile " + process.env.npm_config_cafile)
+      var caJson ;
+      var exec = require('child_process').exec;
+      var cmd = 'npm config get ca';
+      exec(cmd, function(error, stdout, stderr) {
+        caJson=stdout;
+      });
+      ca = JSON.parse(caJson);
+      console.log("ca from JSON.parse of exec: " + ca)
+      options['ca'] = ca ;
     }
     request(options, function(error, response, body){
       if ( error ) {
