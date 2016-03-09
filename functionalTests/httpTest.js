@@ -87,7 +87,7 @@ describe("MAGE-server API JSON test", function(){
     // request(conUrl, function(error, response, body){
     var options = {
       url: conUrl,
-      ca: fs.fs.readFileSync('/etc/ssl/certs/ca-bundle.crt')
+      ca: fs.readFileSync('/etc/ssl/certs/ca-bundle.crt')
     } ;
     request(options, function(error, response, body){
       console.log("Error: " + error);
