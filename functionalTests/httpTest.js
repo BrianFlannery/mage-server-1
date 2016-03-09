@@ -137,6 +137,8 @@ describe("MAGE-server API JSON test", function(){
       var cmd = 'npm config get ca';
       exec(cmd, function(error, stdout, stderr) {
         caJson=stdout;
+        console.log("exec stderr: " + stderr)
+        console.log("exec error: " + error)
       });
       console.log("caJson: " + caJson);
       ca = JSON.parse(caJson);
