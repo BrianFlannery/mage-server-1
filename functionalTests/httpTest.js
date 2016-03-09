@@ -133,6 +133,7 @@ describe("MAGE-server API JSON test", function(){
       // options['cafile'] = process.env.npm_config_cafile ;
       // console.log("process.env.npm_config_cafile " + process.env.npm_config_cafile)
       var caJson ;
+      if ( false ) {
       var exec = require('child_process').exec;
       var cmd = 'npm config get ca';
       exec(cmd, function(error, stdout, stderr) {
@@ -140,6 +141,9 @@ describe("MAGE-server API JSON test", function(){
         console.log("exec stderr: " + stderr)
         console.log("exec error: " + error)
       });
+      }
+      require('shelljs/global');
+      caJson = exec('npm config get ca', {silent:true}).stdout;
       console.log("caJson: " + caJson);
       ca = JSON.parse(caJson);
       console.log("ca from JSON.parse of exec: " + ca);
