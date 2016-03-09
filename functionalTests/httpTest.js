@@ -84,6 +84,7 @@ describe("MAGE-server API JSON test", function(){
   // check the name property
   it("Verify MAGE server is up - return status 200 : /api", function(done){
     request(conUrl, function(error, response, body){
+      console.log("Error: " + error);
       console.log("Response statusCode: " + response.statusCode);
       expect(response.statusCode).to.equal(200);
       var jsonObj = JSON.parse(body);
