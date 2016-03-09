@@ -127,6 +127,9 @@ describe("MAGE-server API JSON test", function(){
     } ;
     if ( setCaTrustViaSourceCode ) {
       options['ca'] = ca ;
+    } else {
+      options['cafile'] = process.env.npm_config_cafile ;
+      console.log("process.env.npm_config_cafile " + process.env.npm_config_cafile)
     }
     request(options, function(error, response, body){
       if ( error ) {
