@@ -116,9 +116,13 @@ describe("MAGE-server API JSON test", function(){
       ca: ca
     } ;
     request(options, function(error, response, body){
+      if ( error ) {
+        console.log("FATAL ERROR: q(" + error + ").");
+      }
       expect(error).to.be.null; 
-      console.log("Error: " + error);
-      console.log("Response statusCode: " + response.statusCode);
+      if ( 200 != response.statusCode ) {
+        console.log("Response statusCode: " + response.statusCode);
+      }
       expect(response.statusCode).to.equal(200);
       var jsonObj = JSON.parse(body);
       var appName = jsonObj['name'].substring(0,4);
