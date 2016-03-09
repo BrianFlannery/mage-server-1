@@ -17,6 +17,7 @@ var expect = require("chai").expect
   // Verify a request without a token is invalid
   // Request a user and verify the data
 
+var setCaTrustViaSourceCode = false;
 
 // Set the connection URL
 var localUrl = config.localServer.location;
@@ -86,24 +87,26 @@ describe("MAGE-server API JSON test", function(){
   it("Verify MAGE server is up - return status 200 : /api", function(done){
     // request(conUrl, function(error, response, body){
     
-    // var fs = require('fs'); var request = require('request');
     var ca = [];
-    var chain = fs.readFileSync('/etc/ssl/certs/ca-bundle.crt', 'utf8');
-    chain = chain.split("\n");
-    var cert = [];
-    var i;
-    for ( i in chain ) {
-      var line = chain[i];
-      if ( line.length != 0 ) {
-        cert.push(line);
-        // console.log(line);
-        if ( line.match( /-END CERTIFICATE-/ ) ) {
-          // console.log("\n\n\nend cert\n\n\n");
-          ca.push( cert.join( "\n" ) );
-          cert = [];
-        // } else {
-          // // console.log(line);
-          // console.log("\nnot end cert " + line + "\n");
+    if ( setCaTrustViaSourceCode ) {
+      // var fs = require('fs'); var request = require('request');
+      var chain = fs.readFileSync('/etc/ssl/certs/ca-bundle.crt', 'utf8');
+      chain = chain.split("\n");
+      var cert = [];
+      var i;
+      for ( i in chain ) {
+        var line = chain[i];
+        if ( line.length != 0 ) {
+          cert.push(line);
+          // console.log(line);
+          if ( line.match( /-END CERTIFICATE-/ ) ) {
+            // console.log("\n\n\nend cert\n\n\n");
+            ca.push( cert.join( "\n" ) );
+            cert = [];
+          // } else {
+            // // console.log(line);
+            // console.log("\nnot end cert " + line + "\n");
+          }
         }
       }
     }
@@ -111,10 +114,13 @@ describe("MAGE-server API JSON test", function(){
     // request({url: "https://mage.dev.geointservices.io/api", ca: ca}, function(error, response, body) { console.log("Error: '" + error + "'"); })
     
     //   ca: fs.readFileSync('/etc/ssl/certs/ca-bundle.crt')
+    //   ca: ca
     var options = {
       url: conUrl,
-      ca: ca
     } ;
+    if ( setCaTrustViaSourceCode ) {
+      options['ca'] = ca ;
+    }
     request(options, function(error, response, body){
       if ( error ) {
         console.log("FATAL ERROR: q(" + error + ").");
