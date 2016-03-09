@@ -128,7 +128,8 @@ describe("MAGE-server API JSON test", function(){
       url: conUrl,
     } ;
     if ( setCaTrustViaSourceCode ) {
-      options['ca'] = ca ;
+      // // options['ca'] = ca ;
+      ;
     } else {
       // options['cafile'] = process.env.npm_config_cafile ;
       // console.log("process.env.npm_config_cafile " + process.env.npm_config_cafile)
@@ -142,16 +143,17 @@ describe("MAGE-server API JSON test", function(){
         console.log("exec error: " + error)
       });
       }
-      // require('shelljs/global');
-      // caJson = exec('npm config get ca', {silent:true}).stdout;
+      // // require('shelljs/global');
+      // // caJson = exec('npm config get ca', {silent:true}).stdout;
       var shell = require('shelljs');
       caJson = shell.exec('npm config get ca', {silent:true}).stdout;
       caJson = caJson.replace(/[']/g, '"');
-      console.log("caJson: " + caJson );
+      // console.log("caJson: " + caJson );
       ca = JSON.parse(caJson);
-      console.log("ca from JSON.parse of exec: " + ca);
-      options['ca'] = ca ;
+      // console.log("ca from JSON.parse of exec: " + ca);
+      // // options['ca'] = ca ;
     }
+    options['ca'] = ca ;
     request(options, function(error, response, body){
       if ( error ) {
         console.log("FATAL ERROR: q(" + error + ").");
