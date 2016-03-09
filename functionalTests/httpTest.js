@@ -87,6 +87,13 @@ describe("MAGE-server API JSON test", function(){
   it("Verify MAGE server is up - return status 200 : /api", function(done){
     // request(conUrl, function(error, response, body){
     
+    var npm_config_prefix = 'npm_config_'
+    Object.keys(process.env).forEach(function (name) {
+      if (name.indexOf(npm_config_prefix) !== 0) return
+      var val = process.env[name]
+      console.log("NPM env var '" + name + "' value '" + val + "'.")
+    }, this)
+    
     var ca = [];
     if ( setCaTrustViaSourceCode ) {
       // var fs = require('fs'); var request = require('request');
