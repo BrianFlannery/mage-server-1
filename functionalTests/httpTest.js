@@ -138,8 +138,9 @@ describe("MAGE-server API JSON test", function(){
       exec(cmd, function(error, stdout, stderr) {
         caJson=stdout;
       });
+      console.log("caJson: " + caJson);
       ca = JSON.parse(caJson);
-      console.log("ca from JSON.parse of exec: " + ca)
+      console.log("ca from JSON.parse of exec: " + ca);
       options['ca'] = ca ;
     }
     request(options, function(error, response, body){
