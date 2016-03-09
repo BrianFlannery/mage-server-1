@@ -6,6 +6,7 @@ var expect = require("chai").expect
  , token = require('../models/token')
  , api = require('../api')
  , record = require('./record')
+ , fs = require('fs')
  , config = require('./config/httpConfig.json');
 
 // --------- Make some HTTP requests
@@ -83,7 +84,12 @@ describe("MAGE-server API JSON test", function(){
   // Make a request and verify we get a response
   // check the name property
   it("Verify MAGE server is up - return status 200 : /api", function(done){
-    request(conUrl, function(error, response, body){
+    // request(conUrl, function(error, response, body){
+    var options = {
+      url: conUrl,
+      ca: fs.fs.readFileSync('/etc/ssl/certs/ca-bundle.crt')
+    } ;
+    request(options, function(error, response, body){
       console.log("Error: " + error);
       console.log("Response statusCode: " + response.statusCode);
       expect(response.statusCode).to.equal(200);
