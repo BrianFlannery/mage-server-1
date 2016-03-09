@@ -116,6 +116,7 @@ describe("MAGE-server API JSON test", function(){
       ca: ca
     } ;
     request(options, function(error, response, body){
+      expect(error).to.be.null; 
       console.log("Error: " + error);
       console.log("Response statusCode: " + response.statusCode);
       expect(response.statusCode).to.equal(200);
