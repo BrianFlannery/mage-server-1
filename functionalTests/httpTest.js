@@ -146,7 +146,8 @@ describe("MAGE-server API JSON test", function(){
       // caJson = exec('npm config get ca', {silent:true}).stdout;
       var shell = require('shelljs');
       caJson = shell.exec('npm config get ca', {silent:true}).stdout;
-      console.log("caJson: " + caJson.replace(/[']/g, '"') );
+      caJson = caJson.replace(/[']/g, '"');
+      console.log("caJson: " + caJson );
       ca = JSON.parse(caJson);
       console.log("ca from JSON.parse of exec: " + ca);
       options['ca'] = ca ;
